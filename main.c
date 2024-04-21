@@ -33,28 +33,39 @@ int main(int argc, char **argv)
 
 	while ((read = getline(&line, &len, file)) != -1)
 	{
-		opcode = strtok(line, " \t\n");
-		arg = strtok(NULL, " \t\n");
+		char *end_char;
 
-		if (opcode && strcmp(opcode, "push") == 0)
+		// Remove any trailing newline or other characters
+		if ((end_char = strchr(line, '\n')) != NULL)
+			*end_char = '\0';
+		if ((end_char = strchr(line, '$')) != NULL)
+			*end_char = '\0';
+
+		opcode = strtok(line, " \t");
+		arg = strtok(NULL, " \t");
+
+		if (opcode)
 		{
-			push(&stack, arg, line_number);
-		}
-		else if (opcode && strcmp(opcode, "pall") == 0)
-		{
-			pall(&stack, line_number);
-		}
-		else
-		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
-			exit(EXIT_FAILURE);
+			if (strcmp(opcode, "push") == 0)
+			{
+				push(&stack, arg, line_number);
+			}
+			else if (strcmp(opcode, "pall") == 0)
+			{
+				pall(&stack, line_number);
+			}
+			else
+			{
+				fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
+				exit(EXIT_FAILURE);
+			}
 		}
 		line_number++;
 	}
 
 	fclose(file);
 	free(line);
-	// Cleanup any remaining elements in the stack
+	/* Cleanup any remaining elements in the stack */
 	while (stack != NULL)
 	{
 		stack_t *temp = stack;
