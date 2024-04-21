@@ -1,5 +1,13 @@
 #include "monty.h"
+#include <unistd.h>
 
+/**
+ * main - entry point for the monty interpreter
+ * @argc: the number of arguments passed to the program
+ * @argv: an array of strings containing the arguments
+ *
+ * Return: 0 on success, 1 on failure
+ */
 int main(int argc, char **argv)
 {
 	FILE *file;
