@@ -44,29 +44,28 @@ typedef void (*f)(stack_t **stack, unsigned int line_number);
 /* file.c */
 void openFile(char *);
 void readFile(FILE *);
-int lenChars(char *);
 int parseLine(char *, int, int);
 void findFunction(char *, char *, int, int);
-
-/* Operation */
-/* Stack.c */
-stack_t *createNode(int);
-void freeNodes(void);
-void pall(stack_t **, unsigned int);
-void push_stack(stack_t **, int);
-void push_queue(stack_t **, int);
-
 void callFunction(f, char *, char *, int, int);
 
-void printTop(stack_t **, unsigned int);
+/* Operation */
+/* Stack_1.c */
+void push_stack(stack_t **, __attribute__((unused)) unsigned int);
+void push_queue(stack_t **, int);
+void pall(stack_t **, unsigned int);
 void pop(stack_t **, unsigned int);
+void printTop(stack_t **, unsigned int);
+/* Stack_2.c */
+stack_t *createNode(int);
+void freeNodes(void);
+
+/* math_1.c */
 void nop(stack_t **, unsigned int);
 void swap(stack_t **, unsigned int);
-
-/* math.c */
 void add(stack_t **, unsigned int);
 void sub(stack_t **, unsigned int);
 void div(stack_t **, unsigned int);
+/* math_2.c*/
 void mul(stack_t **, unsigned int);
 void mod(stack_t **, unsigned int);
 
@@ -74,11 +73,11 @@ void mod(stack_t **, unsigned int);
 void printCharacter(stack_t **, unsigned int);
 void printString(stack_t **, unsigned int);
 void rotl(stack_t **, unsigned int);
+void rotr(stack_t **, unsigned int);
 
 /* Error Handeling */
 /* error_file.c */
 void error(int, ...);
 void error_more(int, ...);
-void rotr(stack_t **, unsigned int);
 
 #endif /* MONTY_H */

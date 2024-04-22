@@ -37,8 +37,6 @@ void readFile(FILE *fileName)
 	}
 }
 
-int lenChars(char *);
-
 /**
  * parseLine - separtates the line into tokens
  * @line: the line to parse

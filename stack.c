@@ -21,7 +21,33 @@ void push_stack(stack_t **stack, __attribute__((unused)) unsigned int n)
 	header->next = temp;
 	temp->prev = header;
 }
+/**
+ * push_queue - pushes a node to the queue
+ * @stack: the stack
+ * @number: the number to add
+ */
+void push_queue(stack_t **stack, int number)
+{
+	stack_t *temp, *newNode;
 
+	if (stack == NULL)
+	{
+		error(4);
+	}
+	newNode = createNode(number);
+	if (*stack == NULL)
+	{
+		*stack = newNode;
+		return;
+	}
+	temp = *stack;
+	while (temp->next != NULL)
+	{
+		temp = temp->next;
+	}
+	temp->next = newNode;
+	newNode->prev = temp;
+}
 /**
  * pall - prints all the values on the stack
  * @stack: the stack

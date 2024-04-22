@@ -90,5 +90,3 @@ void div(stack_t **stack, unsigned int LineNumber)
 	free((*stack)->prev);
 	(*stack)->prev = NULL;
 }
-void mul(stack_t **stack, unsigned int LineNumber);
-void mod(stack_t **stack, unsigned int LineNumber);
