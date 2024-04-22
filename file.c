@@ -27,12 +27,6 @@ void readFile(FILE *fileName)
 
 	for (lineNumber = 1; getline(&line, &lenght, fileName) != -1; lineNumber++)
 	{
-		/*
-
-		if (lenChars(line) == 0)
-			continue;
-		parseLine(line, lineNumber, formate);
-		*/
 		formate = parseLine(line, lineNumber, formate);
 	}
 }
@@ -116,7 +110,7 @@ void findFunction(char *op, char *arg, int lineNumber, int formate)
  * @f: the function to call
  * @opcode: the opcode
  * @value: the argument
- * @lineNumber: the number of the line
+ * @LineNumber: The line number
  * @formate: the formate of the line
  */
 void callFunction(f, char *opcode, char *value, int LineNumber, int formate)

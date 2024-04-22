@@ -64,7 +64,7 @@ void rotl(stack_t **stack, __attribute__((unused)) unsigned int LineNumber)
 /**
  * rotr - Rotates the last node of the stack to the top.
  * @stack: Pointer to a pointer pointing to top node of the stack.
- * @LineNumber: Interger representing the line number of of the opcode.
+ * @LineNumber: The line number.
  */
 void rotr(stack_t **stack, __attribute__((unused)) unsigned int LineNumber)
 {
