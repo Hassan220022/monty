@@ -38,7 +38,23 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void push(stack_t **stack, char *arg, unsigned int line_number);
-void pall(stack_t **stack, unsigned int line_number);
+extern stack_t *header;
+typedef void (*f)(stack_t **stack, unsigned int line_number);
+
+/* file.c */
+void openFile(char *);
+void readFile(FILE *);
+int lenChars(char *);
+void parseLine(char *, int, int);
+void findFunction(char *, int, int);
+
+/* Stack operations.c */
+stack_t *createNode(int);
+void freeNodes(void);
+void printStack(stack_t **, unsigned int);
+void addStack(stack_t **, int);
+void addQueue(stack_t **, int);
+
+void callFunction(f, stack_t **, unsigned int);
 
 #endif /* MONTY_H */
