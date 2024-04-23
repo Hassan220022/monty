@@ -73,10 +73,10 @@ int parseLine(char *line, int lineNumber, int formate)
  * findFunction - finds the function to call
  * @op: the opcode to find
  * @arg: the argument to pass to the function
- * @lineNumber: the number of the line
+ * @line: the number of the line
  * @formate: the formate of the line 1 for queue 0 for stack
  */
-void findFunction(char *op, char *arg, int lineNumber, int formate)
+void findFunction(char *op, char *arg, int line, int formate)
 {
 	int i;
 	int flag;
@@ -106,12 +106,12 @@ void findFunction(char *op, char *arg, int lineNumber, int formate)
 	{
 		if (strcmp(op, func_list[i].opcode) == 0)
 		{
-			callFunction(func_list[i].f, op, arg, lineNumber, formate);
+			callFunction(func_list[i].f, op, arg, line, formate);
 			flag = 0;
 		}
 	}
 	if (flag == 1)
-		error(3, lineNumber, op);
+		error(3, line, op);
 }
 
 /**
