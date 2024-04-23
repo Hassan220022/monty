@@ -119,16 +119,13 @@ void findFunction(char *op, char *arg, int lineNumber, int formate)
  * @func: Pointer to the function that is about to be called.
  * @opcode: string representing the opcode.
  * @value: string representing a numeric value.
- * @line_Number: line numeber for the instruction.
- * @formate: Format specifier. If 0 Nodes will be entered as a stack.
- * if 1 nodes will be entered as a queue.
+ * @line: line numeber for the instruction.
+ * @formate: Format specifier.
  */
-void callFunction(f func, char *opcode, char *value,
-				  int line_Number, int formate)
+void callFunction(f func, char *opcode, char *value, int line, int formate)
 {
 	stack_t *node;
-	int flag;
-	int i;
+	int flag, i;
 
 	flag = 1;
 	if (strcmp(opcode, "push") == 0)
@@ -139,18 +136,18 @@ void callFunction(f func, char *opcode, char *value,
 			flag = -1;
 		}
 		if (value == NULL)
-			error(5, line_Number);
+			error(5, line);
 		for (i = 0; value[i] != '\0'; i++)
 		{
 			if (isdigit(value[i]) == 0)
-				error(5, line_Number);
+				error(5, line);
 		}
 		node = createNode(atoi(value) * flag);
 		if (formate == 0)
-			func(&node, line_Number);
+			func(&node, line);
 		if (formate == 1)
-			push_queue(&node, line_Number);
+			push_queue(&node, line);
 	}
 	else
-		func(&header, line_Number);
+		func(&header, line);
 }
