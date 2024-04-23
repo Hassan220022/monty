@@ -123,7 +123,6 @@ void findFunction(char *op, char *arg, int line, int formate)
  */
 void callFunction(f func, char *opcode, char *value, int line, int formate)
 {
-	(void)func;
 	stack_t *node;
 	int flag, i;
 
