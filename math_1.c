@@ -10,7 +10,7 @@ void swap(stack_t **stack, unsigned int LineNumber)
 	stack_t *tmp;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		more_err(8, LineNumber, "swap");
+		error_more(8, LineNumber, "swap");
 	tmp = (*stack)->next;
 	(*stack)->next = tmp->next;
 	if (tmp->next != NULL)
@@ -42,7 +42,7 @@ void add(stack_t **stack, unsigned int LineNumber)
 	int sum;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		more_err(8, LineNumber, "add");
+		error_more(8, LineNumber, "add");
 
 	(*stack) = (*stack)->next;
 	sum = (*stack)->n + (*stack)->prev->n;
@@ -61,7 +61,7 @@ void sub(stack_t **stack, unsigned int LineNumber)
 	int sub;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		more_err(8, LineNumber, "sub");
+		error_more(8, LineNumber, "sub");
 
 	(*stack) = (*stack)->next;
 	sub = (*stack)->n - (*stack)->prev->n;
@@ -70,19 +70,19 @@ void sub(stack_t **stack, unsigned int LineNumber)
 	(*stack)->prev = NULL;
 }
 /**
- * div - divides elements of the stack
+ * div_stack - divides elements of the stack
  * @stack: the stack
  * @LineNumber: the line number
-*/
-void div(stack_t **stack, unsigned int LineNumber)
+ */
+void div_stack(stack_t **stack, unsigned int LineNumber)
 {
 	int div;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		more_err(8, LineNumber, "div");
+		error_more(8, LineNumber, "div");
 
 	if ((*stack)->n == 0)
-		more_err(9, LineNumber);
+		error_more(9, LineNumber);
 
 	(*stack) = (*stack)->next;
 	div = (*stack)->n / (*stack)->prev->n;

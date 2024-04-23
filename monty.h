@@ -64,7 +64,7 @@ void nop(stack_t **, unsigned int);
 void swap(stack_t **, unsigned int);
 void add(stack_t **, unsigned int);
 void sub(stack_t **, unsigned int);
-void div(stack_t **, unsigned int);
+void div_stack(stack_t **, unsigned int);
 /* math_2.c*/
 void mul(stack_t **, unsigned int);
 void mod(stack_t **, unsigned int);
@@ -77,7 +77,7 @@ void rotr(stack_t **, unsigned int);
 
 /* Error Handeling */
 /* error_file.c */
-void error(int, ...);
-void error_more(int, ...);
+void error(int, int, ...);
+void error_more(int, int, ...);
 
 #endif /* MONTY_H */

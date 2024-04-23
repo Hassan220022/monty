@@ -10,7 +10,7 @@ void mul(stack_t **stack, unsigned int LineNumber)
 	int mul;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		more_err(8, LineNumber, "mul");
+		error_more(8, LineNumber, "mul");
 
 	(*stack) = (*stack)->next;
 	mul = (*stack)->n * (*stack)->prev->n;
@@ -28,10 +28,10 @@ void mod(stack_t **stack, unsigned int LineNumber)
 	int mod;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		more_err(8, LineNumber, "mod");
+		error_more(8, LineNumber, "mod");
 
 	if ((*stack)->n == 0)
-		more_err(9, LineNumber);
+		error_more(9, LineNumber);
 
 	(*stack) = (*stack)->next;
 	mod = (*stack)->n % (*stack)->prev->n;

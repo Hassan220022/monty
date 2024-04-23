@@ -46,7 +46,7 @@ int parseLine(char *line, int lineNumber, int formate)
 
 	if (line == NULL)
 	{
-		error(4);
+		error(4, 0);
 	}
 	opcode = strtok(line, newLine);
 	if (opcode == NULL)
@@ -81,7 +81,7 @@ void findFunction(char *op, char *arg, int lineNumber, int formate)
 		{"swap", swap},
 		{"add", add},
 		{"sub", sub},
-		{"div", div},
+		{"div", div_stack},
 		{"mul", mul},
 		{"mod", mod},
 		{"pchar", printCharacter},
@@ -102,7 +102,7 @@ void findFunction(char *op, char *arg, int lineNumber, int formate)
 		}
 	}
 	if (flag == 1)
-		err(3, lineNumber, op);
+		error(3, lineNumber, op);
 }
 
 /**
@@ -128,11 +128,11 @@ void callFunction(f, char *opcode, char *value, int LineNumber, int formate)
 			flag = -1;
 		}
 		if (value == NULL)
-			err(5, LineNumber);
+			error(5, LineNumber);
 		for (i = 0; value[i] != '\0'; i++)
 		{
 			if (isdigit(value[i]) == 0)
-				err(5, LineNumber);
+				error(5, LineNumber);
 		}
 		node = createNode(atoi(value) * flag);
 		if (formate == 0)

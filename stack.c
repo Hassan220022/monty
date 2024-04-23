@@ -32,7 +32,7 @@ void push_queue(stack_t **stack, int number)
 
 	if (stack == NULL)
 	{
-		error(4);
+		error(4, 0);
 	}
 	newNode = createNode(number);
 	if (*stack == NULL)

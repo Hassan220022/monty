@@ -10,11 +10,11 @@ void printCharacter(stack_t **stack, unsigned int LineNumber)
 
 	if (stack == NULL || *stack == NULL)
 	{
-		more_err(11, LineNumber);
+		error_more(11, LineNumber);
 	}
 	if (temp->n < 0 || temp->n > 127)
 	{
-		more_err(10, LineNumber);
+		error_more(10, LineNumber);
 	}
 	printf("%c\n", temp->n);
 }
@@ -29,7 +29,7 @@ void printString(stack_t **stack, unsigned int LineNumber)
 
 	if (stack == NULL || *stack == NULL)
 	{
-		more_err(11, LineNumber);
+		error_more(11, LineNumber);
 	}
 	while (temp != NULL && temp->n != 0 && (temp->n > 0 && temp->n <= 127))
 	{
