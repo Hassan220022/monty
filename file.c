@@ -134,11 +134,9 @@ void callFunction(f func, char *opcode, char *value, int line, int formate)
 			value = value + 1;
 			flag = -1;
 		}
-		if (value == NULL)
-			error(5, line);
 		for (i = 0; value[i] != '\0'; i++)
 		{
-			if (isdigit(value[i]) == 0)
+			if (isdigit(value[i]) == 0 || value[i] == '-')
 				error(5, line);
 		}
 		node = createNode(atoi(value) * flag);
