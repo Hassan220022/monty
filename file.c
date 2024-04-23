@@ -78,8 +78,7 @@ int parseLine(char *line, int lineNumber, int formate)
  */
 void findFunction(char *op, char *arg, int line, int formate)
 {
-	int i;
-	int flag;
+	int i, flag;
 
 	instruction_t func_list[] = {
 		{"push", push_stack},
