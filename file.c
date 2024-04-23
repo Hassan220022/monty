@@ -113,7 +113,7 @@ void findFunction(char *op, char *arg, int lineNumber, int formate)
  * @LineNumber: The line number
  * @formate: the formate of the line
  */
-void callFunction(f, char *opcode, char *value, int LineNumber, int formate)
+void callFunction(void (*f)(), char *opcode, char *value, int LineNumber, int formate)
 {
 	stack_t *node;
 	int flag;

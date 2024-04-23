@@ -8,6 +8,8 @@
 #include <ctype.h>
 #include <stdarg.h>
 
+#define Buffer_size 1024
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -46,7 +48,7 @@ void openFile(char *);
 void readFile(FILE *);
 int parseLine(char *, int, int);
 void findFunction(char *, char *, int, int);
-void callFunction(f, char *, char *, int, int);
+void callFunction(void (*f)(), char *, char *, int, int);
 
 /* Operation */
 /* Stack_1.c */
