@@ -54,8 +54,8 @@ void error(int errorCode, ...)
  * (7) => When the stack it empty for pop.
  * (8) => When stack is too short for operation.
  * (9) => Division by zero.
- * (10) ~> The number inside a node is outside ASCII bounds.
- * (11) ~> The stack is empty.
+ * (10) => The number inside a node is outside ASCII bounds.
+ * (11) => The stack is empty.
  */
 void error_more(int errorCode, ...)
 {
