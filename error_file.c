@@ -71,7 +71,7 @@ void error_more(int errorCode, ...)
 				va_arg(args, int));
 		break;
 	case 7:
-		fprintf(stderr, "L%d: can't pop an empty stack,\n",
+		fprintf(stderr, "L%d: can't pop an empty stack\n",
 				va_arg(args, int));
 		break;
 	case 8:
