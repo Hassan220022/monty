@@ -24,10 +24,12 @@ void readFile(FILE *fileName)
 	int line_number, format = 0;
 	char buffer[BUFFER_SIZE];
 
-	for (line_number = 1; fgets(buffer, BUFFER_SIZE, fileName) != NULL; line_number++)
+	for (line_number = 1; fgets(buffer, BUFFER_SIZE, fileName) != NULL;
+		 line_number++)
 	{
 		/* Remove the newline character if present */
 		size_t len = strlen(buffer);
+
 		if (len > 0 && buffer[len - 1] == '\n')
 		{
 			buffer[len - 1] = '\0';
@@ -81,7 +83,7 @@ void findFunction(char *op, char *arg, int lineNumber, int formate)
 
 	instruction_t func_list[] = {
 		{"push", push_stack},
-		{"pall", pall},
+		{"pall", pall_print},
 		{"pint", printTop},
 		{"pop", pop},
 		{"nop", nop},
@@ -113,15 +115,16 @@ void findFunction(char *op, char *arg, int lineNumber, int formate)
 }
 
 /**
- * callFunction - calls the function
- * @f: the function to call
- * @opcode: the opcode
- * @value: the argument
- * @LineNumber: The line number
- * @formate: the formate of the line
+ * callFunction - Calls the required function.
+ * @func: Pointer to the function that is about to be called.
+ * @opcode: string representing the opcode.
+ * @value: string representing a numeric value.
+ * @line_Number: line numeber for the instruction.
+ * @formate: Format specifier. If 0 Nodes will be entered as a stack.
+ * if 1 nodes will be entered as a queue.
  */
-void callFunction(f bor3i, char *opcode, char *value,
-				  int LineNumber, int formate)
+void callFunction(f func, char *opcode, char *value,
+				  int line_Number, int formate)
 {
 	stack_t *node;
 	int flag;
@@ -136,18 +139,18 @@ void callFunction(f bor3i, char *opcode, char *value,
 			flag = -1;
 		}
 		if (value == NULL)
-			error(5, LineNumber);
+			error(5, line_Number);
 		for (i = 0; value[i] != '\0'; i++)
 		{
 			if (isdigit(value[i]) == 0)
-				error(5, LineNumber);
+				error(5, line_Number);
 		}
 		node = createNode(atoi(value) * flag);
 		if (formate == 0)
-			bor3i(&node, LineNumber);
+			func(&node, line_Number);
 		if (formate == 1)
-			push_queue(&node, LineNumber);
+			push_queue(&node, line_Number);
 	}
 	else
-		bor3i(&header, LineNumber);
+		func(&header, line_Number);
 }

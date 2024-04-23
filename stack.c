@@ -49,11 +49,11 @@ void push_queue(stack_t **stack, int number)
 	newNode->prev = temp;
 }
 /**
- * pall - prints all the values on the stack
+ * pall_print - prints all the values on the stack
  * @stack: the stack
  * @LineNumber: the line number
  */
-void pall(stack_t **stack, unsigned int LineNumber)
+void pall_print(stack_t **stack, unsigned int LineNumber)
 {
 	stack_t *temp;
 

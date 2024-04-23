@@ -1,5 +1,5 @@
 #include "monty.h"
-#include <unistd.h>
+stack_t *header = NULL;
 
 /**
  * main - entry point for the monty interpreter
@@ -10,6 +10,7 @@
  */
 int main(int argc, char **argv)
 {
+
 	if (argc != 2)
 	{
 		write(STDERR_FILENO, "USAGE: monty file\n", 18);

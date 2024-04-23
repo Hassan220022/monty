@@ -54,7 +54,7 @@ void callFunction(void (*f)(), char *, char *, int, int);
 /* Stack_1.c */
 void push_stack(stack_t **, __attribute__((unused)) unsigned int);
 void push_queue(stack_t **, int);
-void pall(stack_t **, unsigned int);
+void pall_print(stack_t **, unsigned int);
 void pop(stack_t **, unsigned int);
 void printTop(stack_t **, unsigned int);
 /* Stack_2.c */
