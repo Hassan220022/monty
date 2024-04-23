@@ -21,13 +21,20 @@ void openFile(char *fileName)
  */
 void readFile(FILE *fileName)
 {
-	int lineNumber, formate = 0;
-	char *line = NULL;
-	size_t lenght = 0;
+	int line_number, format = 0;
+	char buffer[BUFFER_SIZE];
 
-	for (lineNumber = 1; getline(&line, &lenght, fileName) != -1; lineNumber++)
+	for (line_number = 1; fgets(buffer, BUFFER_SIZE, fileName) != NULL; line_number++)
 	{
-		formate = parseLine(line, lineNumber, formate);
+		/* Remove the newline character if present */
+		size_t len = strlen(buffer);
+		if (len > 0 && buffer[len - 1] == '\n')
+		{
+			buffer[len - 1] = '\0';
+		}
+
+		/* Process the line */
+		format = parseLine(buffer, line_number, format);
 	}
 }
 
@@ -41,23 +48,23 @@ void readFile(FILE *fileName)
  */
 int parseLine(char *line, int lineNumber, int formate)
 {
-	char *opcode, *arg;
+	char *op, *arg;
 	const char *newLine = "\n ";
 
 	if (line == NULL)
-	{
 		error(4);
-	}
-	opcode = strtok(line, newLine);
-	if (opcode == NULL)
+
+	op = strtok(line, newLine);
+	if (op == NULL)
 		return (formate);
 	arg = strtok(NULL, newLine);
 
-	if (strcmp(opcode, "stack") == 0)
+	if (strcmp(op, "stack") == 0)
 		return (0);
-	if (strcmp(opcode, "queue") == 0)
+	if (strcmp(op, "queue") == 0)
 		return (1);
-	findFunction(opcode, arg, lineNumber, formate);
+
+	findFunction(op, arg, lineNumber, formate);
 	return (formate);
 }
 /**
@@ -97,7 +104,7 @@ void findFunction(char *op, char *arg, int lineNumber, int formate)
 	{
 		if (strcmp(op, func_list[i].opcode) == 0)
 		{
-			call_fun(func_list[i].f, op, arg, lineNumber, formate);
+			callFunction(func_list[i].f, op, arg, lineNumber, formate);
 			flag = 0;
 		}
 	}
@@ -113,7 +120,7 @@ void findFunction(char *op, char *arg, int lineNumber, int formate)
  * @LineNumber: The line number
  * @formate: the formate of the line
  */
-void callFunction(void (*f)(), char *opcode, char *value,
+void callFunction(f bor3i, char *opcode, char *value,
 				  int LineNumber, int formate)
 {
 	stack_t *node;
@@ -137,10 +144,10 @@ void callFunction(void (*f)(), char *opcode, char *value,
 		}
 		node = createNode(atoi(value) * flag);
 		if (formate == 0)
-			func(&node, LineNumber);
+			bor3i(&node, LineNumber);
 		if (formate == 1)
 			push_queue(&node, LineNumber);
 	}
 	else
-		func(&header, LineNumber);
+		bor3i(&header, LineNumber);
 }

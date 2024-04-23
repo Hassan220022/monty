@@ -7,8 +7,8 @@
 #include <unistd.h>
 #include <ctype.h>
 #include <stdarg.h>
-
-#define Buffer_size 1024
+/* Define a suitable buffer size for reading lines */
+#define BUFFER_SIZE 1024
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -80,6 +80,6 @@ void rotr(stack_t **, unsigned int);
 /* Error Handeling */
 /* error_file.c */
 void error(int, ...);
-void error_more(int, int, ...);
+void error_more(int, ...);
 
 #endif /* MONTY_H */
