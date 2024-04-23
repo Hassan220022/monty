@@ -46,7 +46,7 @@ int parseLine(char *line, int lineNumber, int formate)
 
 	if (line == NULL)
 	{
-		error(4, 0);
+		error(4);
 	}
 	opcode = strtok(line, newLine);
 	if (opcode == NULL)

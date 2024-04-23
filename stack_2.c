@@ -10,7 +10,7 @@ stack_t *createNode(int number)
 
 	if (newNode == NULL)
 	{
-		error(4, 0);
+		error(4);
 	}
 	newNode->n = number;
 	newNode->next = NULL;

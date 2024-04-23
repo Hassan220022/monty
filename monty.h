@@ -77,7 +77,7 @@ void rotr(stack_t **, unsigned int);
 
 /* Error Handeling */
 /* error_file.c */
-void error(int, int, ...);
+void error(int, ...);
 void error_more(int, int, ...);
 
 #endif /* MONTY_H */
