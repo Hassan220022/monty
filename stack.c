@@ -48,25 +48,6 @@ void push_queue(stack_t **stack, int number)
 	temp->next = newNode;
 	newNode->prev = temp;
 }
-/**
- * pall_print - prints all the values on the stack
- * @stack: the stack
- * @LineNumber: the line number
- */
-void pall_print(stack_t **stack, unsigned int LineNumber)
-{
-	stack_t *temp;
-
-	if (stack == NULL || *stack == NULL)
-		exit(EXIT_FAILURE);
-	temp = *stack;
-	while (temp != NULL)
-	{
-		printf("%d\n", temp->n);
-		temp = temp->next;
-	}
-	(void)LineNumber;
-}
 
 /**
  * pop - removes the top element of the stack

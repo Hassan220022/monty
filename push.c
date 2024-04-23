@@ -42,11 +42,11 @@ void push(stack_t **stack, char *arg, unsigned int line_number)
 }
 
 /**
- * pall - prints all the values on the stack, starting from top
+ * pall_print - prints all the values on the stack, starting from top
  * @stack: double pointer to the head of the stack
  * @line_number: the line number of the command being run
  */
-void pall(stack_t **stack, unsigned int line_number)
+void pall_print(stack_t **stack, unsigned int line_number)
 {
 	(void)line_number; /* Ignore unused parameter */
 
